@@ -34,10 +34,13 @@
             </div>
             <div class="email-content">
                 <p class="subscribe-text">Subscribe now to get notified when we launch</p>
-                <div class="input-box">
-                    <input class="email" type="email" placeholder="Enter your e-mail" />
-                    <button>Notify Me</button>
-                </div>
+                <form onSubmit="return validate()">
+                    <div class="input-box">
+                        <input class="email" type="email" id="email" placeholder="Enter your e-mail" />
+                        <button id="btn">Notify Me</button>
+                    </div>
+                        <span id="error1"></span>
+                    </form>
         </div>
         </div>
     </section>
