@@ -1,3 +1,5 @@
+
+
 const seconds = document.querySelector(".seconds .number");
 minutes = document.querySelector(".minutes .number");
 hours = document.querySelector(".hours .number");
@@ -32,17 +34,6 @@ const timeFunction = setInterval(() => {
     days.textContent = dayValue < 10 ? `0${dayValue}` : dayValue;
 
 }, 1000); 
-
-//const form = document.querySelector(".input-box");
-//const email = document.querySelector("#email");
-//const button = document.querySelector("#btn");
-
-//form.addEventListener("submit", (event) => {
-  //  if (!id.value) {
-    //    event.preventDefault();
-      //  alert("Please enter your email address");
-   // }
-//});
 
 function validate(){
     var email=document.getElementById("email").value;
