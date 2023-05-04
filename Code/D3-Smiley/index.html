@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <title>D3</title>
+</head>
+<body>
+    <script>
+/*
+        var dataArray = [20, 40, 30, 60];
+        var width = 500;
+        var height = 500;
+
+        // A scale is a function and an object at the same time. The largest data value will be the maximum width and the others will be calculated from that so that everything fits into the container
+        var widthScale = d3.scale.linear()
+            .domain([0, 60]) // Domain is the dataArray in D3. 0 represents the minimal value and 60 the maximal value inside the canvas.
+            .range([0, width]) // The canvas is still only 500px wide so here we define that everything needs to fit into that range
+
+        var color = d3.scale.linear()
+            .domain([0, 60])
+            .range(["red", "blue"])
+
+        var axis = d3.svg.axis ()
+            .ticks(5) // How many numbers show on the scale
+            .scale(widthScale);
+
+        var canvas = d3.select("body")
+        .append("svg")
+        .attr("width", width)//500) // After I changed to scale, I changed the 500 to the widthScale so that the largest data value will define the size of evrything inside the canvas
+        .attr("height", height)//500);
+        .append("g") // Groups all the bars together so that I can apply changes to all of them together
+        .attr("transform", "translate(50, 50)") // Moving all the bars together
+
+        var bars = canvas.selectAll("rect") // Here we choose to display all the data in the dataArray
+        .data(dataArray) // Specifying where the data is coming from
+        .enter() // Returns placeholders for each dataelement for which there are no corresponding DOM elements (rectangles) on the page
+            .append("rect") // For each of these placeholders I'll append a rectangle
+            .attr("width", function(d) {return widthScale(d); })//d*10;}) // Width will be a function of the data (20, 40 and 50 px wide). D is an argument (can be called anything)
+                                                            // Now the width of all the data will be calculated from the widthScale with the max of 60.
+            .attr("height", 50)
+            .attr("fill", function (d) {return color(d) })
+            .attr("y", function(d, i) {return i*100}); // Positions on the y-axis. Function of the index. D is the value of the data - 20, 40 and 50. I is the place number of each data - nr. 1, 2 and 3.
+
+        canvas.append("g")
+        .attr("transform", "translate(0, 400)") // Moving the axis 400px down
+        .call(axis);
+
+
+        //==================================================
+        //             Enter, Update, Exit
+        //==================================================
+        // Here we bind data to elements like bars or circles
+
+        // Enter selection
+        DOM elements < data elements // We have fewer DOm elements that data elements - the page shows the element (placeholder) but it's not bound to any data
+        // Exit selection
+        DOM elements > data elements // We have fewer data elements that DOM elements
+        // Update selection
+        DOM elements = data elements // We have equal amount of data elements and DOM elements
+*/
+
+        //==================================================
+        //             Transitions (Animations)
+        //==================================================
+        //Here we can make stuff move around
+
+        var canvas = d3.select("body")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 500);
+
+        var circle = canvas.append("circle")
+            .attr("cx", 50)
+            .attr("cy", 50)
+            .attr("r", 25);
+
+        //Circle moves around three times and at the end it changes color
+        circle.transition()
+            .duration(1500)
+            .delay(1000) // Animations starts one second later
+            .attr("cx", 150)
+            .transition()
+            .attr("cy", 200)
+            .transition()
+            .attr("cx", 50)
+            .each("end", function () {d3.select(this).attr("fill", "red"); });
+
+
+        
+
+
+
+        /*var circle = canvas.append("circle")
+        .attr("cx", 250) // C=Center, X=X-axis So cx represents the horisontal position
+        .attr("cy", 250)
+        .attr("r", 50) // Radius
+        .attr("fill", "red");
+
+        var rect = canvas.append("rect")
+        .attr("width", 100)
+        .attr("height", 50);
+
+        var line = canvas.append("line")
+        .attr("x1", 0)
+        .attr("y1", 100)
+        .attr("x2", 400)
+        .attr("y2", 400)
+        .attr("stroke", "green")
+        .attr("stroke-width", 10);*/
+    </script>
+   
+</body>
+</html>
